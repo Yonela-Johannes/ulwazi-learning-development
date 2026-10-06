@@ -1,0 +1,263 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --ink: #151515;
+    --paper: #f5f2ea;
+    --warm: #b9915a;
+    --warm-hover: #9e7947;
+    --muted: #77736b;
+    --white: #ffffff;
+
+    --font-sans:
+      "Inter",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      sans-serif;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    overflow-x: hidden;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--warm);
+    color: var(--ink);
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ---------------------------------------
+   Scrollbar
+--------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--warm);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--warm-hover);
+}
+
+/* ---------------------------------------
+   Editorial colours
+--------------------------------------- */
+
+.bg-paper {
+  background-color: var(--paper);
+}
+
+.bg-ink {
+  background-color: var(--ink);
+}
+
+.bg-warm {
+  background-color: var(--warm);
+}
+
+.text-ink {
+  color: var(--ink);
+}
+
+.text-paper {
+  color: var(--paper);
+}
+
+.text-warm {
+  color: var(--warm);
+}
+
+.text-muted-custom {
+  color: var(--muted);
+}
+
+.border-warm {
+  border-color: var(--warm);
+}
+
+.border-ink-subtle {
+  border-color: rgb(21 21 21 / 12%);
+}
+
+.border-paper-subtle {
+  border-color: rgb(245 242 234 / 12%);
+}
+
+/* ---------------------------------------
+   Editorial typography
+--------------------------------------- */
+
+.font-display {
+  font-family: var(--font-sans);
+  letter-spacing: -0.04em;
+}
+
+.tracking-editorial {
+  letter-spacing: 0.12em;
+}
+
+/* ---------------------------------------
+   Buttons
+--------------------------------------- */
+
+.btn-warm {
+  background: var(--warm);
+  color: var(--ink);
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.btn-warm:hover {
+  background: var(--warm-hover);
+  color: var(--white);
+}
+
+.btn-warm:active {
+  transform: translateY(1px);
+}
+
+.btn-outline-paper {
+  border: 1px solid rgb(245 242 234 / 30%);
+  color: var(--paper);
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease;
+}
+
+.btn-outline-paper:hover {
+  border-color: var(--paper);
+  background: rgb(245 242 234 / 8%);
+}
+
+.btn-outline-ink {
+  border: 1px solid rgb(21 21 21 / 30%);
+  color: var(--ink);
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease;
+}
+
+.btn-outline-ink:hover {
+  border-color: var(--ink);
+  background: rgb(21 21 21 / 5%);
+}
+
+/* ---------------------------------------
+   Story utilities
+--------------------------------------- */
+
+.story-section {
+  position: relative;
+  width: 100%;
+}
+
+.story-scene {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+}
+
+.story-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.story-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------
+   Reduced motion
+--------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------
+   Mobile
+--------------------------------------- */
+
+@media (max-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+}
