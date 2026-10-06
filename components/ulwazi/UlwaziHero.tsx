@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useTransform } from "framer-motion";
 
 import StorySection from "@/components/story/StorySection";
 import StickyScene from "@/components/story/StickyScene";
@@ -45,17 +45,48 @@ export default function UlwaziHero() {
   const shouldReduceMotion = useReducedMotion();
   const { open: openDonateModal } = useDonate();
 
-  // Text scroll-drift transforms
-  const textOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0.1]);
-  const textY = useTransform(scrollYProgress, [0, 0.45], [0, -50]);
+  const textOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.42],
+    [1, 0.15],
+  );
 
-  // Gallery tiles speed transforms
-  const tileY0 = useTransform(scrollYProgress, [0, 1], [0, photos[0].speed]);
-  const tileY1 = useTransform(scrollYProgress, [0, 1], [0, photos[1].speed]);
-  const tileY2 = useTransform(scrollYProgress, [0, 1], [0, photos[2].speed]);
-  const tileY3 = useTransform(scrollYProgress, [0, 1], [0, photos[3].speed]);
+  const textY = useTransform(
+    scrollYProgress,
+    [0, 0.42],
+    [0, -60],
+  );
 
-  const tileYTransforms = [tileY0, tileY1, tileY2, tileY3];
+  const tileY0 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, photos[0].speed],
+  );
+
+  const tileY1 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, photos[1].speed],
+  );
+
+  const tileY2 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, photos[2].speed],
+  );
+
+  const tileY3 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, photos[3].speed],
+  );
+
+  const tileYTransforms = [
+    tileY0,
+    tileY1,
+    tileY2,
+    tileY3,
+  ];
 
   return (
     <StorySection
@@ -63,70 +94,104 @@ export default function UlwaziHero() {
       id="beginning"
       label="The Beginning"
       height="220vh"
-      className="bg-[#F5F2EA] text-[#151515]"
+      className="bg-[#F8F8F6] text-[#291B4F]"
     >
       <StickyScene>
-        <div className="relative h-full w-full bg-[#F5F2EA]">
-          <div className="relative z-10 mx-auto flex h-full w-full max-w-[1600px] flex-col justify-end gap-8 px-6 pb-16 pt-24 sm:px-10 sm:pb-20 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16 lg:px-16 lg:pb-24 lg:pt-28">
-            {/* Story with scroll drift */}
+        <div className="relative h-full w-full overflow-hidden bg-[#F8F8F6]">
+          <div className="relative z-10 mx-auto flex h-full w-full max-w-[1700px] flex-col justify-end gap-10 px-5 pb-12 pt-24 sm:px-8 sm:pb-16 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16 lg:px-12 lg:pb-20 xl:px-16">
+            {/* Story */}
             <ScrollReveal>
               <motion.div
                 style={
                   shouldReduceMotion
-                    ? {}
-                    : { opacity: textOpacity, y: textY }
+                    ? undefined
+                    : {
+                        opacity: textOpacity,
+                        y: textY,
+                      }
                 }
-                className="max-w-xl"
+                className="max-w-2xl"
               >
                 <StoryText
                   as="h1"
                   eyebrow="Ulwazi Learning Development"
-                  description="Ulwazi means knowledge in Xhosa. We run safe holiday programmes and teach life skills to children in Mfuleni, so they have somewhere to learn, grow and feel supported."
+                  description="Ulwazi means knowledge in Xhosa. We create safe spaces where children in Mfuleni can learn, grow, build life skills and feel supported."
                 >
-                  Every child deserves
+                  Every child
                   <br />
-                  a safe place to grow.
+                  deserves a
+                  <br />
+                  <span className="text-[#009CA6]">
+                    safe place to grow.
+                  </span>
                 </StoryText>
 
-                <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-[#77736B]">
+                <div className="mt-9 flex items-center gap-6">
                   <button
                     type="button"
                     onClick={openDonateModal}
-                    className="border-b border-[#B9915A] pb-0.5 text-[#151515] transition-colors hover:text-[#9E7947] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B9915A] cursor-pointer"
+                    className="group inline-flex cursor-pointer items-center gap-3 border-b-2 border-[#009CA6] pb-1.5 text-base font-medium tracking-[-0.01em] text-[#291B4F] transition-colors duration-200 hover:text-[#009CA6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#009CA6] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F8F8F6]"
                   >
                     Support the work
+
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform duration-200 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
                   </button>
                 </div>
+
               </motion.div>
             </ScrollReveal>
 
-            {/* Gallery with parallax tiles */}
+            {/* Gallery */}
             <ScrollReveal delay={150}>
               <div
-                className="-mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 sm:-mx-10 sm:px-10 lg:mx-0 lg:grid lg:h-[68vh] lg:grid-flow-dense lg:grid-cols-6 lg:grid-rows-6 lg:gap-3 lg:overflow-visible lg:px-0"
+                className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:h-[68vh] lg:grid-flow-dense lg:grid-cols-6 lg:grid-rows-6 lg:gap-3 lg:overflow-visible lg:px-0 lg:pb-0"
                 role="group"
                 aria-label="Photos from Ulwazi programmes"
               >
                 {photos.map((photo, index) => {
                   const yTransform = tileYTransforms[index];
+
                   return (
                     <motion.figure
                       key={photo.src}
                       style={
-                        shouldReduceMotion ? {} : { y: yTransform }
+                        shouldReduceMotion
+                          ? undefined
+                          : { y: yTransform }
                       }
-                      className={`relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden bg-[#E7E2D6] sm:w-[45%] lg:aspect-auto lg:w-auto ${photo.span}`}
+                      className={`
+                        group relative aspect-[4/5] w-[78%] shrink-0
+                        snap-center overflow-hidden
+                        bg-[#E8E8E3]
+                        rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.05)]
+                        transition-shadow duration-300
+                        hover:shadow-[0_0_30px_rgba(0,0,0,0.1)]
+                        sm:aspect-[3/4] sm:w-[78%]
+                        sm:first-of-type:ml-5
+                        sm:last-of-type:mr-5
+                        sm:w-[48%]
+                        lg:aspect-auto lg:w-auto
+                        ${photo.span}
+                      `}
                     >
                       <Image
                         src={photo.src}
                         alt={photo.caption}
                         fill
                         priority={photo.priority}
-                        sizes="(max-width: 1024px) 70vw, 40vw"
-                        className="object-cover"
+                        sizes="(max-width: 640px) 78vw, (max-width: 1024px) 48vw, 40vw"
+                        className="object-cover transition-transform duration-[1400ms]roundex-2xl ease-out group-hover:scale-[1.025]"
                       />
-                      <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#151515]/60 to-transparent px-4 pb-3 pt-10 text-xs text-white">
-                        {photo.caption}
+
+                      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#291B4F]/70 via-[#291B4F]/15 to-transparent opacity-90" />
+
+                      <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 px-4 pb-4 text-sm font-medium text-white sm:px-5 sm:pb-5">
+                        <span>{photo.caption}</span>
                       </figcaption>
                     </motion.figure>
                   );

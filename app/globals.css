@@ -2,23 +2,20 @@
 
 @layer base {
   :root {
-    --ink: #151515;
-    --paper: #f5f2ea;
-    --warm: #b9915a;
-    --warm-hover: #9e7947;
-    --muted: #77736b;
+    --ink: #291b4f;
+    --paper: #f8f8f6;
+    --teal: #009ca6;
+    --teal-dark: #007f87;
+    --muted: #6f6b78;
     --white: #ffffff;
+    --mist: "#E8E8E3";
 
     --font-sans:
-      "Inter",
+      var(--font-dm-sans),
       system-ui,
       -apple-system,
       BlinkMacSystemFont,
       "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
       sans-serif;
   }
 
@@ -56,8 +53,8 @@
   }
 
   ::selection {
-    background: var(--warm);
-    color: var(--ink);
+    background: var(--teal);
+    color: var(--white);
   }
 
   button,
@@ -94,16 +91,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--warm);
+  background: var(--teal);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--warm-hover);
+  background: var(--teal-dark);
 }
 
 /* ---------------------------------------
-   Editorial colours
+   Brand colours
 --------------------------------------- */
 
 .bg-paper {
@@ -114,8 +111,8 @@
   background-color: var(--ink);
 }
 
-.bg-warm {
-  background-color: var(--warm);
+.bg-teal {
+  background-color: var(--teal);
 }
 
 .text-ink {
@@ -126,24 +123,24 @@
   color: var(--paper);
 }
 
-.text-warm {
-  color: var(--warm);
+.text-teal {
+  color: var(--teal);
 }
 
 .text-muted-custom {
   color: var(--muted);
 }
 
-.border-warm {
-  border-color: var(--warm);
+.border-teal {
+  border-color: var(--teal);
 }
 
 .border-ink-subtle {
-  border-color: rgb(21 21 21 / 12%);
+  border-color: rgb(41 27 79 / 12%);
 }
 
 .border-paper-subtle {
-  border-color: rgb(245 242 234 / 12%);
+  border-color: rgb(248 248 246 / 20%);
 }
 
 /* ---------------------------------------
@@ -152,7 +149,7 @@
 
 .font-display {
   font-family: var(--font-sans);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
 }
 
 .tracking-editorial {
@@ -163,26 +160,25 @@
    Buttons
 --------------------------------------- */
 
-.btn-warm {
-  background: var(--warm);
-  color: var(--ink);
+.btn-teal {
+  background: var(--teal);
+  color: var(--white);
   transition:
     background-color 250ms ease,
     color 250ms ease,
     transform 250ms ease;
 }
 
-.btn-warm:hover {
-  background: var(--warm-hover);
-  color: var(--white);
+.btn-teal:hover {
+  background: var(--teal-dark);
 }
 
-.btn-warm:active {
+.btn-teal:active {
   transform: translateY(1px);
 }
 
 .btn-outline-paper {
-  border: 1px solid rgb(245 242 234 / 30%);
+  border: 1px solid rgb(248 248 246 / 30%);
   color: var(--paper);
   transition:
     background-color 250ms ease,
@@ -191,11 +187,11 @@
 
 .btn-outline-paper:hover {
   border-color: var(--paper);
-  background: rgb(245 242 234 / 8%);
+  background: rgb(248 248 246 / 8%);
 }
 
 .btn-outline-ink {
-  border: 1px solid rgb(21 21 21 / 30%);
+  border: 1px solid rgb(41 27 79 / 24%);
   color: var(--ink);
   transition:
     background-color 250ms ease,
@@ -204,7 +200,7 @@
 
 .btn-outline-ink:hover {
   border-color: var(--ink);
-  background: rgb(21 21 21 / 5%);
+  background: rgb(41 27 79 / 5%);
 }
 
 /* ---------------------------------------

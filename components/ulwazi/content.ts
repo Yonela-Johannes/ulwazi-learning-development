@@ -51,8 +51,8 @@ export const ORG_DETAILS = {
   shortName: "Ulwazi",
   tagline: "Learning without limits",
   npoStatus: "Registered Non-Profit Organisation",
-  location: "Mfuleni Township, Cape Town",
-  locationFull: "Mfuleni Township, Cape Town, Western Cape, South Africa",
+  location: "Cape Town",
+  locationFull: "Cape Town, Western Cape, South Africa",
   email: "Lumka.johannes@ulwazilearningdevelopment.com",
   formCc: "johannesyonela.com",
   operatingHours: "Mon – Fri: 08:00 – 17:00",
@@ -124,7 +124,7 @@ export const PROGRAMMES_PLANS: ProgrammePlan[] = [
     image: "/images/mar2.jpg",
     description:
       "Ulwazi Learning Development was founded as an NGO to directly impact communities by creating educational excellence in disadvantaged, poverty-stricken townships.",
-    audience: "Township children in Mfuleni & Cape Town",
+    audience: "Township children",
   },
   {
     id: "mission",
@@ -221,11 +221,19 @@ export const SPONSORS: Sponsor[] = [
   },
   {
     name: "Yonela Johannes",
-    role: "FrontEnd Web Engineer & Volunteer",
+    role: "Technology & Digital Partner",
     org: "Ulwazi Digital & Technology Partner",
     image: "/img/yonela.jpg",
     quote:
       "I'm passionate about volunteering my time & talents to Ulwazi, and I'm very proud to serve this community and see young lives transformed.",
+  },
+  {
+    name: "Webafro",
+    role: "Digital & Technology Partner",
+    org: "Webafro",
+    image: "/images/webafro.jpg",
+    quote:
+      "We believe technology should create opportunities, connect communities, and help organisations doing meaningful work reach more people.",
   },
 ];
 
@@ -257,3 +265,54 @@ export const CONTACT_INTEREST_OPTIONS = [
   "Sponsorship a Holiday Programme",
   "Donation Inquiry",
 ] as const;
+
+export type HeadlineLine = { text: string; accent?: boolean }[];
+
+export const FOUNDER_PANELS = {
+  who: {
+    eyebrow: "Leadership & Vision",
+    counter: "Lumka",
+    headline: [
+      [{ text: "Meet the woman" }],
+      [{ text: "behind" }],
+      [{ text: "Ulwazi.", accent: true }],
+    ] satisfies HeadlineLine[],
+  },
+
+  why: {
+    eyebrow: "The Township Reality",
+    counter: "The reality",
+    headline: [
+      [{ text: "When school" }],
+      [{ text: "is out," }],
+      [{ text: "what happens next?", accent: true }],
+    ] satisfies HeadlineLine[],
+    callout:
+      "For many children, the school holidays can mean long periods without structured, safe activities.",
+    image: {
+      src: "/images/img1.jpg",
+      alt: "Township children during school holidays",
+      caption: "Safe spaces during school holidays",
+    },
+  },
+
+  words: {
+    eyebrow: "In her own words",
+    counter: "Her words",
+  },
+
+  vision: {
+    eyebrow: "The Sanctuary",
+    counter: "The sanctuary",
+    headline: [
+      [{ text: "A place for" }],
+      [{ text: "hope,", accent: true }, { text: " safety" }],
+      [{ text: "and knowledge." }],
+    ] satisfies HeadlineLine[],
+    image: {
+      src: "/images/mainimg.jpg",
+      alt: "Ulwazi Learning Development in action",
+      caption: "Learning, connection and community",
+    },
+  },
+} as const;

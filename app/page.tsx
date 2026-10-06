@@ -11,9 +11,9 @@ import CommunityStory from "@/components/ulwazi/CommunityStory";
 import SupportStory from "@/components/ulwazi/SupportStory";
 
 export const metadata: Metadata = {
-  title: "Ulwazi Learning Development | Cape Town Township Youth",
+  title: "Ulwazi Learning Development | Township Youth",
   description:
-    "Ulwazi Learning Development is a registered non-profit organisation in Cape Town dedicated to protecting, educating, and empowering vulnerable township children through holiday programmes and life skills.",
+    "Ulwazi Learning Development is a registered non-profit organisation in dedicated to protecting, educating, and empowering vulnerable township children through holiday programmes and life skills.",
 };
 
 const chapters: StoryChapter[] = [
