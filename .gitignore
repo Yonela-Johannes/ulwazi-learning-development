@@ -2,6 +2,18 @@
 /node_modules
 /.pnpm
 
+node_modules
+.next
+dist
+build
+coverage
+
+*.tsbuildinfo
+
+.env
+.env.local
+.env.production
+
 # next.js
 /.next/
 /out/
