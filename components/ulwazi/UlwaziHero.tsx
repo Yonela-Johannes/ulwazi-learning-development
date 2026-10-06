@@ -9,10 +9,7 @@ import StickyScene from "@/components/story/StickyScene";
 import StoryText from "@/components/story/StoryText";
 import ScrollReveal from "@/components/story/ScrollReveal";
 import { useStoryProgress } from "@/components/story/useStoryProgress";
-
-interface UlwaziHeroProps {
-  onOpenDonateModal?: () => void;
-}
+import { useDonate } from "./DonateProvider";
 
 const photos = [
   {
@@ -42,10 +39,11 @@ const photos = [
   },
 ];
 
-export default function UlwaziHero({ onOpenDonateModal }: UlwaziHeroProps) {
+export default function UlwaziHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollYProgress = useStoryProgress(sectionRef);
   const shouldReduceMotion = useReducedMotion();
+  const { open: openDonateModal } = useDonate();
 
   // Text scroll-drift transforms
   const textOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0.1]);
@@ -91,15 +89,13 @@ export default function UlwaziHero({ onOpenDonateModal }: UlwaziHeroProps) {
                 </StoryText>
 
                 <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-[#77736B]">
-                  {onOpenDonateModal && (
-                    <button
-                      type="button"
-                      onClick={onOpenDonateModal}
-                      className="border-b border-[#B9915A] pb-0.5 text-[#151515] transition-colors hover:text-[#9E7947] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B9915A]"
-                    >
-                      Support the work
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={openDonateModal}
+                    className="border-b border-[#B9915A] pb-0.5 text-[#151515] transition-colors hover:text-[#9E7947] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B9915A] cursor-pointer"
+                  >
+                    Support the work
+                  </button>
                 </div>
               </motion.div>
             </ScrollReveal>

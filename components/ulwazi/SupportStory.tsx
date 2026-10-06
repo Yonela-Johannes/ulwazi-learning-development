@@ -8,22 +8,20 @@ import StorySection from "@/components/story/StorySection";
 import StoryText from "@/components/story/StoryText";
 import ScrollReveal from "@/components/story/ScrollReveal";
 import { useStoryProgress } from "@/components/story/useStoryProgress";
+import { useDonate } from "./DonateProvider";
 import {
   DONATION_TIERS,
   ORG_DETAILS,
   CONTACT_INTEREST_OPTIONS,
 } from "./content";
 
-interface SupportStoryProps {
-  onOpenDonateModal?: () => void;
-}
-
 const STATEMENT = "A safe place can change a childhood. Your support keeps Mfuleni children educated, safe, and nourished.";
 
-export default function SupportStory({ onOpenDonateModal }: SupportStoryProps) {
+export default function SupportStory() {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollYProgress = useStoryProgress(sectionRef);
   const shouldReduceMotion = useReducedMotion();
+  const { open: openDonateModal } = useDonate();
 
   const [selectedTier, setSelectedTier] = useState<number>(350);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
@@ -116,7 +114,7 @@ export default function SupportStory({ onOpenDonateModal }: SupportStoryProps) {
           <div className="flex flex-col items-center justify-center gap-4 max-w-md mx-auto pt-2">
             <button
               type="button"
-              onClick={onOpenDonateModal}
+              onClick={openDonateModal}
               className="w-full btn-warm py-4 rounded-full text-xs font-mono font-bold tracking-widest uppercase flex items-center justify-center gap-2 cursor-pointer shadow-lg"
             >
               <Heart className="w-4 h-4 fill-[#151515]" />
