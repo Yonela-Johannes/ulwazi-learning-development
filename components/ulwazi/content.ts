@@ -1,4 +1,4 @@
-export type FounderContent = {
+export type StoryPerson = {
   name: string;
   role: string;
   origin: string;
@@ -26,7 +26,10 @@ export type Principle = {
 export type GalleryItem = {
   src: string;
   title: string;
-  category: "Holiday Programmes" | "Outings & Bus Trips" | "Learning & Workshops";
+  category:
+    | "Holiday Programmes"
+    | "Outings & Bus Trips"
+    | "Learning & Workshops";
   desc: string;
 };
 
@@ -51,100 +54,120 @@ export const ORG_DETAILS = {
   shortName: "Ulwazi",
   tagline: "Learning without limits",
   npoStatus: "Registered Non-Profit Organisation",
-  location: "Cape Town",
-  locationFull: "Cape Town, Western Cape, South Africa",
+
+  // Keep the organisation's scope broad rather than tying it to one city.
+  location: "South Africa",
+  locationFull: "Townships, villages & communities across South Africa",
+
   email: "Lumka.johannes@ulwazilearningdevelopment.com",
-  formCc: "johannesyonela.com",
+
+  // Replace this with a real CC email if the form actually uses one.
+  formCc: "",
+
   operatingHours: "Mon – Fri: 08:00 – 17:00",
   operatingNote: "School Holiday Programmes Active",
+
   socials: {
     facebook: "https://facebook.com",
     linkedin: "https://linkedin.com",
     github: "https://github.com",
   },
+
   payPalButtonId: "3297RXXACGQ7Q",
   payPalUrl: "https://www.paypal.com/donate",
-  contactFormUrl: "https://formsubmit.co/Lumka.johannes@ulwazilearningdevelopment.com",
+
+  contactFormUrl:
+    "https://formsubmit.co/Lumka.johannes@ulwazilearningdevelopment.com",
+
   coreQuote:
-    "Foundational Education is linked to all development goals—reducing hunger, fighting disease, ending poverty, encouraging economic growth, and building lasting peace.",
+    "Foundational education helps children build confidence, develop life skills, discover new possibilities, and create stronger futures for themselves and their communities.",
+} as const;
+
+
+export const STORY_PERSON: StoryPerson = {
+  name: "Lumka Johannes",
+  role: "Founder & Community Leader",
+  origin: "Eastern Cape & South African townships",
+  image: "/images/lush.jpg",
+
+  quote:
+    "My entire life I have lived in the township, and I have seen how easily children can be left without positive things to do when school is out. I founded Ulwazi to give children a place to learn, grow, feel safe, and believe in what is possible.",
+
+  bio: [
+    "Lumka Johannes grew up in communities in the Eastern Cape and Cape Town, experiencing first-hand both the challenges families face and the strength that exists within township communities.",
+
+    "She saw a need for children to have meaningful opportunities beyond the classroom, especially during school holidays when structured activities are often limited.",
+
+    "From that experience, Ulwazi Learning Development was born — a community-focused organisation creating spaces where children can learn, connect, explore their interests, and build confidence for the future.",
+  ],
+
+  pillars: [
+    "Community-led learning",
+    "Safe and welcoming spaces",
+    "Mentorship and positive role models",
+    "Opportunities for every child",
+  ],
 };
 
-export const FOUNDER_CONTENT: FounderContent = {
-  name: "Lumka Johannes",
-  role: "Founder & Community Visionary",
-  origin: "Eastern Cape & Cape Town Townships",
-  image: "/images/lush.jpg",
-  quote:
-    "My entire life I have lived in the township, and I am a witness to children getting bored with nothing positive to do. They end up vulnerable to substances and gangsterism. I founded Ulwazi to give them hope, knowledge, and sanctuary.",
-  bio: [
-    "Lumka Johannes grew up in South African townships across the Eastern Cape and Cape Town. In these communities, parents frequently work in low-paying, demanding jobs that create financial and emotional strain at home.",
-    "Despite these daily struggles, families strive to raise their children in challenging environments. Lumka recognized that during school holidays, children were left without constructive outlets, making them targets for gang recruitment, drug involvement, and crime.",
-    "Driven by deep compassion and lived experience, Lumka established Ulwazi Learning Development—a non-profit initiative dedicated to keeping children engaged, educated, and safe during holiday periods.",
-  ],
-  pillars: [
-    "Grassroots Township Engagement",
-    "Holistic Child Mentorship",
-    "Safe Space During Holidays",
-    "Empowering Girls & Boys Equally",
-  ],
-};
 
 export const PRINCIPLES: Principle[] = [
   {
     number: "01",
-    title: "Safe Sanctuary",
+    title: "Safe Spaces",
     description:
-      "Providing a secure, nurturing space during school holidays away from street dangers, gangsterism, and substance abuse.",
+      "Creating welcoming spaces where children can spend their holidays learning, playing, connecting, and simply being themselves.",
   },
   {
     number: "02",
     title: "Positive Role Models",
     description:
-      "Connecting youth with healthy mentors who instill self-knowing, dignity, and positive life perspectives.",
+      "Connecting children and young people with caring adults and mentors who encourage confidence, self-belief, and positive choices.",
   },
   {
     number: "03",
-    title: "Foundational Education",
+    title: "Learning for Life",
     description:
-      "Empowering children with essential literacy, life skills, and constructive learning without limits.",
+      "Building literacy, life skills, creativity, curiosity, and practical knowledge that children can carry with them beyond the programme.",
   },
   {
     number: "04",
-    title: "Community Transformation",
+    title: "Stronger Communities",
     description:
-      "Fostering long-term social growth that reduces poverty, fights disease, and promotes peace in township families.",
+      "Working with families, volunteers, partners, and local communities to create opportunities that help children and communities grow together.",
   },
 ];
+
 
 export const PROGRAMMES_PLANS: ProgrammePlan[] = [
   {
     id: "start",
-    title: "OUR START",
-    subtitle: "Educational Excellence",
+    title: "Where We Started",
+    subtitle: "Learning begins with opportunity",
     image: "/images/mar2.jpg",
     description:
-      "Ulwazi Learning Development was founded as an NGO to directly impact communities by creating educational excellence in disadvantaged, poverty-stricken townships.",
-    audience: "Township children",
+      "Ulwazi began with a simple idea: children deserve meaningful opportunities to learn, explore, and grow, no matter where they come from.",
+    audience: "Children and young people",
   },
   {
     id: "mission",
-    title: "OUR MISSION",
-    subtitle: "Life-Changing Opportunities",
+    title: "What We Do",
+    subtitle: "Learning, connection and possibility",
     image: "/images/bus.jpg",
     description:
-      "Together, we can create life-changing opportunities, holiday learning programmes, and joyful experiences for children who need them most.",
-    audience: "Vulnerable township youth",
+      "Through holiday programmes, learning activities, outings, mentorship, and community experiences, we create spaces where children can discover new interests and enjoy learning together.",
+    audience: "Children, young people and families",
   },
   {
     id: "vision",
-    title: "OUR VISION",
-    subtitle: "Everlasting Sanctuary",
+    title: "Where We're Going",
+    subtitle: "A future without limits",
     image: "/images/mat.jpg",
     description:
-      "To mould a society where every child finds an everlasting sanctuary, positive role models, and the freedom to learn without limits.",
-    audience: "All township youth & families",
+      "We want every child to have access to safe spaces, positive role models, meaningful learning, and opportunities to imagine a bigger future.",
+    audience: "Communities across South Africa",
   },
 ];
+
 
 export const GALLERY_CATEGORIES = [
   "All",
@@ -153,165 +176,174 @@ export const GALLERY_CATEGORIES = [
   "Learning & Workshops",
 ] as const;
 
+
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     src: "/images/mainimg.jpg",
-    title: "Community Holiday Assembly",
+    title: "Holiday Programme",
     category: "Holiday Programmes",
-    desc: "Bringing township children together for games, meals, and structured holiday learning.",
+    desc: "Children coming together for learning, games, meals, friendship, and fun during the school holidays.",
   },
   {
     src: "/images/img1.jpg",
-    title: "Youth Empowerment Session",
+    title: "Learning Together",
     category: "Learning & Workshops",
-    desc: "Teaching core life skills, self-respect, and positive goals for the future.",
+    desc: "Interactive activities that help children build confidence, practical skills, and curiosity.",
   },
   {
     src: "/images/img13.jpg",
-    title: "Outdoor Recreation & Sports",
+    title: "Outdoor Fun",
     category: "Holiday Programmes",
-    desc: "Keeping children active, healthy, and energized in a safe sanctuary.",
+    desc: "Giving children time to play, move, explore, and enjoy being part of a positive community.",
   },
   {
     src: "/images/bus.jpg",
-    title: "Educational Bus Excursion",
+    title: "Outings & New Experiences",
     category: "Outings & Bus Trips",
-    desc: "Exposing children to new horizons beyond township borders.",
+    desc: "Taking children beyond their everyday surroundings and introducing them to new places and experiences.",
   },
   {
     src: "/images/mat.jpg",
-    title: "Interactive Classroom Learning",
+    title: "Learning in Action",
     category: "Learning & Workshops",
-    desc: "Foundational literacy and group learning sessions.",
+    desc: "Creating engaging spaces where children can learn, ask questions, create, and discover new interests.",
   },
   {
     src: "/images/mar2.jpg",
-    title: "Circle of Care & Mentorship",
+    title: "Mentorship & Connection",
     category: "Holiday Programmes",
-    desc: "Sharing stories, role model talks, and building healthy self-esteem.",
+    desc: "Building meaningful relationships through conversations, activities, encouragement, and shared experiences.",
   },
   {
     src: "/img/6.jpg",
     title: "Classroom Engagement",
     category: "Learning & Workshops",
-    desc: "Hands-on guidance and educational support.",
+    desc: "Hands-on learning and guidance that makes participation active, practical, and enjoyable.",
   },
   {
     src: "/img/11.jpg",
-    title: "Ulwazi Holiday Camp Smiles",
+    title: "Holiday Camp Moments",
     category: "Holiday Programmes",
-    desc: "Joy, friendship, and safety during school holidays.",
+    desc: "Creating memories through friendship, laughter, learning, and shared experiences.",
   },
   {
     src: "/images/grow.jpg",
-    title: "Nurturing Mindsets",
+    title: "Growing Together",
     category: "Learning & Workshops",
-    desc: "Molding positive-thinking, forward-looking youth.",
+    desc: "Helping children develop confidence, positive thinking, and the belief that their future can be bigger.",
   },
 ];
+
 
 export const SPONSORS: Sponsor[] = [
   {
     name: "Nicky Davies",
-    role: "Chief Empowering Officer & Personal Change Catalyst",
+    role: "Health & Community Advocate",
     org: "Towards Health INTERNATIONAL",
     image: "/images/Nicky Davies.jpg",
     quote:
-      "For now what keeps me going is this worthy cause – ULWAZI. Supporting these children creates a real ripple effect of health, hope, and emotional well-being.",
+      "What keeps me going is this worthy cause — Ulwazi. Supporting children creates a ripple effect of health, hope, confidence, and opportunity.",
   },
   {
     name: "Yonela Johannes",
     role: "Technology & Digital Partner",
-    org: "Ulwazi Digital & Technology Partner",
+    org: "Ulwazi Digital & Technology",
     image: "/img/yonela.jpg",
     quote:
-      "I'm passionate about volunteering my time & talents to Ulwazi, and I'm very proud to serve this community and see young lives transformed.",
+      "I'm passionate about giving my time and skills to Ulwazi. I'm proud to support the work and see how meaningful opportunities can change young lives.",
   },
   {
-    name: "Webafro",
+    name: "WebAfro",
     role: "Digital & Technology Partner",
-    org: "Webafro",
-    image: "/images/webafro.jpg",
+    org: "WebAfro",
+    image: "/images/webafro.png",
     quote:
       "We believe technology should create opportunities, connect communities, and help organisations doing meaningful work reach more people.",
   },
 ];
 
+
 export const DONATION_TIERS: DonationTier[] = [
   {
     amount: 150,
-    label: "R150 (~$10)",
-    title: "Nutrition Pack",
-    desc: "Feeds 1 child with healthy meals and daily snacks during holiday camp.",
+    label: "R150",
+    title: "Help a Child Learn",
+    desc: "Help provide learning materials, activities, and refreshments during a programme.",
   },
   {
     amount: 350,
-    label: "R350 (~$22)",
-    title: "Learning Kit",
-    desc: "Provides stationery, books, and art supplies for workshops.",
+    label: "R350",
+    title: "Support a Learning Kit",
+    desc: "Help provide stationery, books, creative materials, and other resources for learning.",
     popular: true,
   },
   {
     amount: 750,
-    label: "R750 (~$45)",
-    title: "Full Camp Pass",
-    desc: "Covers transport, meals, excursions, and full holiday sanctuary.",
+    label: "R750",
+    title: "Support a Programme",
+    desc: "Help contribute towards transport, meals, activities, outings, and a full programme experience.",
   },
 ];
+
 
 export const CONTACT_INTEREST_OPTIONS = [
   "General Query",
   "Volunteering / Mentorship",
-  "Sponsorship a Holiday Programme",
+  "Sponsoring a Programme",
   "Donation Inquiry",
 ] as const;
 
+
 export type HeadlineLine = { text: string; accent?: boolean }[];
 
-export const FOUNDER_PANELS = {
+
+export const STORY_PANELS = {
   who: {
-    eyebrow: "Leadership & Vision",
-    counter: "Lumka",
+    eyebrow: "Where It Began",
+    counter: "Our story",
     headline: [
-      [{ text: "Meet the woman" }],
-      [{ text: "behind" }],
-      [{ text: "Ulwazi.", accent: true }],
+      [{ text: "It started with" }],
+      [{ text: "a belief" }],
+      [{ text: "in every child.", accent: true }],
     ] satisfies HeadlineLine[],
   },
 
   why: {
-    eyebrow: "The Township Reality",
-    counter: "The reality",
+    eyebrow: "Why We Started",
+    counter: "Why we started",
     headline: [
       [{ text: "When school" }],
       [{ text: "is out," }],
-      [{ text: "what happens next?", accent: true }],
+      [{ text: "opportunity shouldn't be.", accent: true }],
     ] satisfies HeadlineLine[],
+
     callout:
-      "For many children, the school holidays can mean long periods without structured, safe activities.",
+      "For many children, school holidays can mean long periods without structured activities, learning opportunities, or safe spaces to spend time together.",
+
     image: {
       src: "/images/img1.jpg",
-      alt: "Township children during school holidays",
-      caption: "Safe spaces during school holidays",
+      alt: "Children taking part in an Ulwazi activity",
+      caption: "Creating positive spaces during school holidays",
     },
   },
 
   words: {
-    eyebrow: "In her own words",
+    eyebrow: "A Founder’s Voice",
     counter: "Her words",
   },
 
   vision: {
-    eyebrow: "The Sanctuary",
-    counter: "The sanctuary",
+    eyebrow: "Where We're Going",
+    counter: "Our vision",
     headline: [
-      [{ text: "A place for" }],
-      [{ text: "hope,", accent: true }, { text: " safety" }],
-      [{ text: "and knowledge." }],
+      [{ text: "More space for" }],
+      [{ text: "hope,", accent: true }, { text: " learning" }],
+      [{ text: "and possibility." }],
     ] satisfies HeadlineLine[],
+
     image: {
       src: "/images/mainimg.jpg",
-      alt: "Ulwazi Learning Development in action",
+      alt: "Children taking part in an Ulwazi programme",
       caption: "Learning, connection and community",
     },
   },

@@ -5,7 +5,7 @@ import StoryNav from "@/components/ulwazi/StoryNav";
 import StoryFooter from "@/components/ulwazi/StoryFooter";
 
 import UlwaziHero from "@/components/ulwazi/UlwaziHero";
-import FounderStory from "@/components/ulwazi/FounderStory";
+import OurStory from "@/components/ulwazi/OurStory";
 import ImpactStory from "@/components/ulwazi/ImpactStory";
 import CommunityStory from "@/components/ulwazi/CommunityStory";
 import SupportStory from "@/components/ulwazi/SupportStory";
@@ -33,12 +33,11 @@ export default function Home() {
         <ChapterNav chapters={chapters} />
 
         <UlwaziHero />
-        <FounderStory />
+        <OurStory />
         <ImpactStory />
         <CommunityStory />
         <SupportStory />
-
-        <StoryFooter />
+        <StoryFooter />/
       </main>
     </DonateProvider>
   );

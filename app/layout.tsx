@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Nunito } from "next/font/google";
 
 import MotionProvider from "@/components/story/MotionProvider";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const nunito = Nunito({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -19,23 +19,28 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Ulwazi Learning Development is a registered non-profit organisation in Cape Town dedicated to protecting, educating, and empowering vulnerable township children through holiday programmes and life skills.",
+    "Ulwazi Learning Development is a registered non-profit organisation in South Africa working to educate, support, and empower children and young people in townships, villages, and underserved communities.",
 
   keywords: [
     "Ulwazi Learning Development",
     "NGO South Africa",
-    "Cape Town NGO",
-    "Mfuleni",
-    "Township Youth Development",
-    "Lumka Johannes",
-    "Holiday Programme",
-    "Education Non Profit",
+    "South African nonprofit",
+    "Child development South Africa",
+    "Children's education South Africa",
+    "Township youth development",
+    "Village youth development",
+    "Community development South Africa",
+    "Youth empowerment",
+    "Child education",
+    "Life skills",
+    "Holiday programmes",
+    "Education nonprofit",
   ],
 
   openGraph: {
     title: "Ulwazi Learning Development",
     description:
-      "Empowering vulnerable township children with life skills, safe sanctuary, and foundational education.",
+      "Creating opportunities for children and young people across South Africa through education, life skills, support, and community development.",
     url: "https://www.ulwazilearningdevelopment.org/",
     siteName: "Ulwazi Learning Development",
     images: [
@@ -62,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="en" className={nunito.variable}>
       <body>
         <MotionProvider>{children}</MotionProvider>
       </body>

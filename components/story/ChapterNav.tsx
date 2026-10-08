@@ -16,7 +16,9 @@ export default function ChapterNav({
   chapters,
   className = "",
 }: ChapterNavProps) {
-  const [activeChapter, setActiveChapter] = useState(chapters[0]?.id ?? "");
+  const [activeChapter, setActiveChapter] = useState(
+    chapters[0]?.id ?? "",
+  );
 
   const idsKey = chapters.map((chapter) => chapter.id).join("|");
 
@@ -29,31 +31,45 @@ export default function ChapterNav({
 
     if (!elements.length) return;
 
+    let ticking = false;
+
     const updateActiveChapter = () => {
-      const viewportCenter = window.innerHeight * 0.42;
+      if (ticking) return;
 
-      let closestElement: HTMLElement | null = null;
-      let closestDistance = Infinity;
+      ticking = true;
 
-      for (const element of elements) {
-        const rect = element.getBoundingClientRect();
+      window.requestAnimationFrame(() => {
+        const targetPosition = window.innerHeight * 0.4;
 
-        if (rect.bottom < 0 || rect.top > window.innerHeight) {
-          continue;
+        let closestElement: HTMLElement | null = null;
+        let closestDistance = Infinity;
+
+        for (const element of elements) {
+          const rect = element.getBoundingClientRect();
+
+          /*
+           * Use the section's top edge as the primary
+           * reference point. This makes the indicator
+           * feel more natural as the user moves through
+           * long story sections.
+           */
+          const distance = Math.abs(rect.top - targetPosition);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestElement = element;
+          }
         }
 
-        const center = rect.top + rect.height / 2;
-        const distance = Math.abs(center - viewportCenter);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestElement = element;
+        if (
+          closestElement &&
+          closestElement.id !== activeChapter
+        ) {
+          setActiveChapter(closestElement.id);
         }
-      }
 
-      if (closestElement) {
-        setActiveChapter(closestElement.id);
-      }
+        ticking = false;
+      });
     };
 
     updateActiveChapter();
@@ -68,14 +84,14 @@ export default function ChapterNav({
       window.removeEventListener("scroll", updateActiveChapter);
       window.removeEventListener("resize", updateActiveChapter);
     };
-  }, [idsKey]);
+  }, [idsKey, activeChapter]);
 
   if (!chapters.length) return null;
 
   return (
     <nav
-      aria-label="Story chapters"
-      className={`fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block ${className}`}
+      aria-label="Story sections"
+      className={`fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 lg:block xl:right-8 ${className}`}
     >
       <ol className="flex flex-col items-end gap-1">
         {chapters.map((chapter, index) => {
@@ -86,36 +102,38 @@ export default function ChapterNav({
               <a
                 href={`#${chapter.id}`}
                 aria-current={active ? "location" : undefined}
-                className="group flex items-center justify-end gap-4 py-2.5 pl-4 focus-visible:outline-none"
+                aria-label={`Go to ${chapter.label}`}
+                className="group flex items-center justify-end gap-3 rounded-full py-2.5 pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#009CA6]/50"
               >
+                {/* Label */}
                 <span
                   className={`
-                    text-xs font-medium tracking-[-0.01em]
+                    text-sm font-semibold
+                    leading-none
                     transition-all duration-300
                     ${
                       active
                         ? "translate-x-0 text-[#291B4F] opacity-100"
-                        : "translate-x-1 text-[#291B4F]/55 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                        : "translate-x-2 text-[#291B4F]/50 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
                     }
                   `}
                 >
                   {chapter.label}
                 </span>
 
+                {/* Indicator */}
                 <span
                   aria-hidden="true"
-                  className={`
-                    relative flex h-5 w-2 items-center justify-center
-                  `}
+                  className="flex h-6 w-3 items-center justify-center"
                 >
                   <span
                     className={`
                       block rounded-full
-                      transition-all duration-500
+                      transition-all duration-300
                       ${
                         active
-                          ? "h-5 w-1.5 bg-[#009CA6]"
-                          : "h-1.5 w-1.5 bg-[#291B4F]/20 group-hover:bg-[#009CA6]/60"
+                          ? "h-6 w-1.5 bg-[#009CA6]"
+                          : "h-2 w-2 bg-[#291B4F]/20 group-hover:bg-[#009CA6]/70"
                       }
                     `}
                   />
@@ -126,12 +144,16 @@ export default function ChapterNav({
         })}
       </ol>
 
-      <div className="mt-5 flex items-center justify-end gap-2">
-        <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-[#291B4F]/35">
-          Story
+      {/* Section count */}
+      <div className="mt-6 flex items-center justify-end gap-2">
+        <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[#291B4F]/40">
+          Explore
         </span>
 
-        <span className="h-px w-6 bg-[#009CA6]/40" />
+        <span
+          aria-hidden="true"
+          className="h-px w-7 bg-[#009CA6]/40"
+        />
       </div>
     </nav>
   );

@@ -13,26 +13,26 @@ import { useDonate } from "./DonateProvider";
 
 const photos = [
   {
-    src: "/images/mainimg.jpg",
+    src: "/images/landing1.avif",
     caption: "Empowering township children",
     span: "lg:col-span-4 lg:row-span-4",
     priority: true,
     speed: -30,
   },
   {
-    src: "/images/img1.jpg",
+    src: "/images/landing2.avif",
     caption: "Safe holiday programmes",
     span: "lg:col-span-2 lg:row-span-3",
     speed: -60,
   },
   {
-    src: "/images/img13.jpg",
+    src: "/images/landing3.avif",
     caption: "Foundational life skills",
     span: "lg:col-span-2 lg:row-span-3",
     speed: -20,
   },
   {
-    src: "/img/6.jpg",
+    src: "/images/landing4.avif",
     caption: "Building future leaders",
     span: "lg:col-span-4 lg:row-span-2",
     speed: -50,
@@ -45,48 +45,15 @@ export default function UlwaziHero() {
   const shouldReduceMotion = useReducedMotion();
   const { open: openDonateModal } = useDonate();
 
-  const textOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.42],
-    [1, 0.15],
-  );
+  const textOpacity = useTransform(scrollYProgress, [0, 0.42], [1, 0.15]);
+  const textY = useTransform(scrollYProgress, [0, 0.42], [0, -60]);
 
-  const textY = useTransform(
-    scrollYProgress,
-    [0, 0.42],
-    [0, -60],
-  );
+  const tileY0 = useTransform(scrollYProgress, [0, 1], [0, photos[0].speed]);
+  const tileY1 = useTransform(scrollYProgress, [0, 1], [0, photos[1].speed]);
+  const tileY2 = useTransform(scrollYProgress, [0, 1], [0, photos[2].speed]);
+  const tileY3 = useTransform(scrollYProgress, [0, 1], [0, photos[3].speed]);
 
-  const tileY0 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, photos[0].speed],
-  );
-
-  const tileY1 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, photos[1].speed],
-  );
-
-  const tileY2 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, photos[2].speed],
-  );
-
-  const tileY3 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, photos[3].speed],
-  );
-
-  const tileYTransforms = [
-    tileY0,
-    tileY1,
-    tileY2,
-    tileY3,
-  ];
+  const tileYTransforms = [tileY0, tileY1, tileY2, tileY3];
 
   return (
     <StorySection
@@ -94,7 +61,7 @@ export default function UlwaziHero() {
       id="beginning"
       label="The Beginning"
       height="220vh"
-      className="bg-[#F8F8F6] text-[#291B4F]"
+      className="bg-[#f6f6f8] text-[#291B4F]"
     >
       <StickyScene>
         <div className="relative h-full w-full overflow-hidden bg-[#F8F8F6]">
@@ -114,16 +81,14 @@ export default function UlwaziHero() {
               >
                 <StoryText
                   as="h1"
-                  eyebrow="Ulwazi Learning Development"
-                  description="Ulwazi means knowledge in Xhosa. We create safe spaces where children in Mfuleni can learn, grow, build life skills and feel supported."
+                  eyebrow=""
+                  description="Ulwazi means knowledge in Xhosa. We create safe, joyful spaces in Mfuleni where children can learn, play, build life skills, and simply be children."
                 >
                   Every child
                   <br />
-                  deserves a
+                  deserves to
                   <br />
-                  <span className="text-[#009CA6]">
-                    safe place to grow.
-                  </span>
+                  <span className="text-[#009CA6]">smile.</span>
                 </StoryText>
 
                 <div className="mt-9 flex items-center gap-6">
@@ -132,8 +97,7 @@ export default function UlwaziHero() {
                     onClick={openDonateModal}
                     className="group inline-flex cursor-pointer items-center gap-3 border-b-2 border-[#009CA6] pb-1.5 text-base font-medium tracking-[-0.01em] text-[#291B4F] transition-colors duration-200 hover:text-[#009CA6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#009CA6] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F8F8F6]"
                   >
-                    Support the work
-
+                    Help a child smile
                     <span
                       aria-hidden="true"
                       className="transition-transform duration-200 group-hover:translate-x-1"
@@ -142,7 +106,6 @@ export default function UlwaziHero() {
                     </span>
                   </button>
                 </div>
-
               </motion.div>
             </ScrollReveal>
 
@@ -159,11 +122,7 @@ export default function UlwaziHero() {
                   return (
                     <motion.figure
                       key={photo.src}
-                      style={
-                        shouldReduceMotion
-                          ? undefined
-                          : { y: yTransform }
-                      }
+                      style={shouldReduceMotion ? undefined : { y: yTransform }}
                       className={`
                         group relative aspect-[4/5] w-[78%] shrink-0
                         snap-center overflow-hidden
@@ -171,10 +130,9 @@ export default function UlwaziHero() {
                         rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.05)]
                         transition-shadow duration-300
                         hover:shadow-[0_0_30px_rgba(0,0,0,0.1)]
-                        sm:aspect-[3/4] sm:w-[78%]
+                        sm:aspect-[3/4] sm:w-[48%]
                         sm:first-of-type:ml-5
                         sm:last-of-type:mr-5
-                        sm:w-[48%]
                         lg:aspect-auto lg:w-auto
                         ${photo.span}
                       `}
@@ -185,7 +143,7 @@ export default function UlwaziHero() {
                         fill
                         priority={photo.priority}
                         sizes="(max-width: 640px) 78vw, (max-width: 1024px) 48vw, 40vw"
-                        className="object-cover transition-transform duration-[1400ms]roundex-2xl ease-out group-hover:scale-[1.025]"
+                        className="object-cover transition-transform duration-[1400ms] rounded-2xl ease-out"
                       />
 
                       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#291B4F]/70 via-[#291B4F]/15 to-transparent opacity-90" />

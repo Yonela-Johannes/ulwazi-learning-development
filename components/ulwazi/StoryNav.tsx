@@ -10,7 +10,7 @@ import { ORG_DETAILS } from "./content";
 
 const navLinks = [
   { name: "The Beginning", href: "#beginning" },
-  { name: "Founder", href: "#lumka" },
+  { name: "Our Story", href: "#our-story" },
   { name: "The Work", href: "#ulwazi" },
   { name: "Community", href: "#community" },
   { name: "Support", href: "#support" },
@@ -73,7 +73,7 @@ export default function StoryNav() {
               <a
                 key={link.name}
                 href={link.href}
-                className="relative py-2 text-sm font-medium tracking-[-0.01em] text-[#291B4F]/75 transition-colors duration-200 hover:text-[#009CA6] focus-visible:outline-none focus-visible:text-[#009CA6]"
+                className="relative py-2 text-base font-semibold tracking-[-0.01em] text-[#291B4F]/75 transition-colors duration-200 hover:text-[#009CA6] focus-visible:outline-none focus-visible:text-[#009CA6]"
               >
                 {link.name}
               </a>
@@ -168,10 +168,6 @@ export default function StoryNav() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="group flex items-baseline gap-4 text-3xl font-medium tracking-[-0.035em] transition-colors duration-200 hover:text-[#009CA6] sm:text-4xl"
                 >
-                  <span className="text-xs font-medium tracking-[0.12em] text-[#009CA6]">
-                    0{index + 1}
-                  </span>
-
                   <span>{link.name}</span>
                 </a>
               ))}
@@ -185,7 +181,7 @@ export default function StoryNav() {
               className="flex w-full items-center justify-center gap-2 rounded-full bg-[#009CA6] px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-[#007F87]"
             >
               <Heart className="h-5 w-5 fill-current" />
-              <span>Support Our Children</span>
+              <span>Support the Work</span>
             </button>
 
             <p className="mt-4 text-center text-xs leading-5 text-[#6F6B78]">
