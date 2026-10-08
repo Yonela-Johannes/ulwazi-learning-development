@@ -238,9 +238,7 @@ export default function SupportStory() {
                 <div className="mt-10">
                   <button
                     type="button"
-                    // NOTE: DonateProvider's `open` needs to accept an optional
-                    // amount for the selection to carry into the modal.
-                    onClick={() => openDonateModal(selectedTier)}
+                    onClick={() => openDonateModal()}
                     className="btn-teal flex w-full cursor-pointer items-center justify-center gap-3 px-6 py-4 text-sm font-semibold uppercase tracking-[0.12em]"
                   >
                     <Heart className="h-4 w-4 fill-current" aria-hidden="true" />
